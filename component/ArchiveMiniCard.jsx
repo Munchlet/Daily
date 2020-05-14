@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { PixelRatio, StyleSheet, Text, View } from "react-native";
+import { PixelRatio, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const styles = StyleSheet.create({
 	container: {
@@ -34,19 +34,19 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default function ArchiveMiniCard({ color, title, time }) {
+export default function ArchiveMiniCard({ color, date, time, onClick }) {
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={onClick}>
 			<View style={styles.leftView}>
 				<View style={[styles.block, { backgroundColor: color }]} />
 				<View style={styles.textView}>
 					<Text style={styles.time}>{time}</Text>
 					<Text style={styles.title} numberOfLines={1}>
-						{title}
+						{date}
 					</Text>
 				</View>
 			</View>
 			<MaterialCommunityIcons name="chevron-right" size={24} color="#c8c9de" />
-		</View>
+		</TouchableOpacity>
 	);
 }

@@ -5,6 +5,8 @@ import React from "react";
 import { Text, View } from "react-native";
 import { setCustomText, setCustomTextInput } from "react-native-global-props";
 import Home from "./screen/Home";
+import NotebookEditor from "./screen/NotebookEditor";
+
 const Stack = createStackNavigator();
 
 if (typeof Buffer === "undefined") global.Buffer = require("buffer").Buffer;
@@ -50,6 +52,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName="Home" headerMode="none" options={{ headerShown: false }}>
 				<Stack.Screen name="Home" component={Home} />
+				<Stack.Screen name="NotebookEditor" component={NotebookEditor} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

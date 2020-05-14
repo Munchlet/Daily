@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		bottom: 20,
 		right: 20,
-		height: 70,
-		width: 70,
+		height: 60,
+		width: 60,
 		backgroundColor: "#4449e1",
 		justifyContent: "center",
 		alignItems: "center",
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default function Home() {
+export default function Home({ navigation }) {
 	const [search, setSearch] = React.useState("");
 	const [notebooks] = React.useState([
 		{ color: "#ff76bd", title: "2019" },
@@ -73,24 +73,30 @@ export default function Home() {
 		{
 			color: "#ff76bd",
 			time: "10:00am",
+			date: "December 12",
 			title: "My mom visited me today!",
 		},
 		{
 			color: "#ff76bd",
 			time: "11:07am",
+			date: "December 10",
 			title: "was down with a cold on a summer",
 		},
 		{
 			color: "#7378ff",
 			time: "07:46pm",
+			date: "December 09",
 			title: "Janet called me early this morning when i had",
 		},
 		{
 			color: "#d6926b",
 			time: "02:34pm",
+			date: "December 05",
 			title: "Watched Money Heist. WOW!",
 		},
 	]);
+
+	const onClick = (entry) => navigation.navigate("NotebookEditor", entry);
 
 	return (
 		<View style={styles.container}>
@@ -116,7 +122,7 @@ export default function Home() {
 			/>
 			<View style={styles.archiveView}>
 				{entries.map((entry) => (
-					<ArchiveMiniCard {...entry} key={entry.title} />
+					<ArchiveMiniCard {...entry} key={entry.title} onClick={() => onClick(entry)} />
 				))}
 			</View>
 		</View>
